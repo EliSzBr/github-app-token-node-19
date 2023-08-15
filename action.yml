@@ -22,8 +22,14 @@ outputs:
   token:
     description: An installation token for the GitHub App on the requested repository.
 runs:
-  using: node16
-  main: dist/index.js
+  using: "composite"
+  - uses: actions/setup-node@v3
+    with:
+      node-version: 20
+  - working-directory: ${{ env.GITHUB_ACTION_PATH }}
+    run: npm install
+  - working-directory: ${{ env.GITHUB_ACTION_PATH }}
+    run: npm run dist/index.js
 branding:
   icon: unlock
   color: gray-dark
