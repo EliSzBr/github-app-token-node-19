@@ -29,7 +29,7 @@ runs:
   - working-directory: ${{ env.GITHUB_ACTION_PATH }}
     run: npm install
   - working-directory: ${{ env.GITHUB_ACTION_PATH }}
-    run: npm run dist/index.js
+    run: node dist/index.js
 branding:
   icon: unlock
   color: gray-dark
